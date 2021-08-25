@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <title>Retirement Simulator</title>
+    </head>
+    <body>
+        <div class="container">
+            <div
+            class="p-5 text-center bg-image"
+            style="
+              background-image: url('img/header.png');
+              height: 400px;
+            "
+          >
+            <div class="mask" >
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    
+                  <h1 class="text-dark" style="background-color: rgba(255,255,255,0.6); ">Retirement Simulator</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            </p> </p>
+          </div>
+           <div class="row">
+                <div class="col-6">
+                    <!--Primer simulador-->
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccione su AFP</label>
+                        <select class="form-control" id="rentabilidad" placeholder="Fondo Previsional">
+                          <option></option>
+                          <option>A</option>
+                          <option>B</option>
+                          <option>C</option>
+                          <option>D</option>
+                          <option>E</option>
+                        </select>
+                      </div><br>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Rentabilidad Simulada</span>
+                        <input type="text" id="rentabilidad2" placeholder="Opcional" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">%</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccione su Genero</label>
+                        <select class="form-control" id="genero">
+                          <option></option>
+                          <option>Hombre</option>
+                          <option>Mujer</option>
+                        </select>
+                      </div><br>
+
+                      <div class="input-group mb-3"> 
+                        <span class="input-group-text" id="basic-addon1">Fecha actual</span>
+                        <input type="date" id="fecha" class="form-control" placeholder="fecha" aria-label="fecha" aria-describedby="basic-addon1">
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <input type="text" id="edad" class="form-control" placeholder="Edad actual" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">Edad</span>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input type="text" id="edadjubilacion" class="form-control" placeholder="Opcional" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">Edad jubilacion</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Sueldo $</span>
+                        <input type="text" id="sueldo" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Valor fondos $</span>
+                        <input type="text" id="fondos" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">APV $</span>
+                        <input type="text" id="apv" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+                      
+                      <button type="submit" id="enviar1" class="btn btn-primary">Calcular</button>
+
+                      <script src="./formulas.js"></script>
+
+                      </form>
+
+                      
+                    <!---->
+                </div>
+                <div class="col-6">
+                    <!--Segundo Simulador-->
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccione su AFP</label>
+                        <select class="form-control" id="rentabilidad1" placeholder="Fondo Previsional">
+                          <option></option>
+                          <option>A</option>
+                          <option>B</option>
+                          <option>C</option>
+                          <option>D</option>
+                          <option>E</option>
+                        </select>
+                      </div><br>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Rentabilidad Simulada</span>
+                        <input type="text" id="rentabilidad3" placeholder="Opcional" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">%</span>
+                      </div>
+                    
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccione su Genero</label>
+                        <select class="form-control" id="genero1">
+                          <option></option>
+                          <option>Hombre</option>
+                          <option>Mujer</option>
+                        </select>
+                      </div><br>
+
+                      <div class="input-group mb-3"> 
+                        <span class="input-group-text" id="basic-addon1">Fecha actual</span>
+                        <input type="date" id="fecha1" class="form-control" placeholder="fecha" aria-label="fecha" aria-describedby="basic-addon1">
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <input type="text" id="edad1" class="form-control" placeholder="Edad actual" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">Edad</span>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input type="text" id="edadjubilacion1" class="form-control" placeholder="Opcional" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">Edad jubilacion</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Sueldo $</span>
+                        <input type="text" id="sueldo1" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Valor fondos $</span>
+                        <input type="text" id="fondos1" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Fondo esperado a jubilar $</span>
+                        <input type="text" id="fondosesperados" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">clp</span>
+                      </div>
+
+                      <button type="submit" id="enviar2" class="btn btn-primary">Calcular</button>
+
+                      <script src="./formulas1.js"></script>
+
+                      </form>
+
+                    <!---->
+                </div>
+           </div>
+           
+            
+            <p id="parrafo">no hay texto</p>
+
+            
+            
+
+
+
+           <div class="row">
+                <h3>Informaciones</h3>
+                <div class="container">
+                    <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h6>
+                </div>
+           </div>
+        </div>
+    </body>
+</html>
