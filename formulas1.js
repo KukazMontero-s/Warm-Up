@@ -24,12 +24,17 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
             }
 
         if (edadjubilacion != ""){
-            if(edad >= edadjubilacion){
+            if(isNaN(edadjubilacion.replace(',','').replace(',','').replace(',',''))){
+                alert('La edad de jubilacion ingresada sólo acepta valores numéricos');
+                edad.focus();
+                return false;
+                }
+            else if(edad >= edadjubilacion){
                 alert('La edad de Jubilacion debe ser mayor que la edad actual');
                 edad.focus();
                 return false;
                 }
-            }
+           }
             
 
         if (sueldo == ""){
@@ -59,7 +64,14 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
             }
         
             if(rentabilidad1 != ""){
-                rentabilidad = rentabilidad1/100
+                if(isNaN(rentabilidad1.replace(',','').replace(',','').replace(',',''))){
+                    alert('La rentabilidad del afiliado sólo aceptan valores numéricos');
+                    return false;
+                    }
+                else{
+                    rentabilidad = rentabilidad1/100
+                }
+                
             }
             else{
                 if (rentabilidad == ""){
@@ -115,11 +127,12 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
         for (var i = 0; i < (parseInt(edadjubilacion) - parseInt(edad)); i++) {
             fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
         }
+        
 
         console.log(fondoTotal)
         
         
 
-    var parrafo = document.getElementById("parrafo")
-    parrafo.innerHTML = "El APV total que debe ingresar es " + (fondose - Math.round(fondoTotal)) + " o " + Math.round((fondose - Math.round(fondoTotal))/(parseInt(edadjubilacion) - parseInt(edad))) + " cada año"
+    var respuesta = document.querySelector(".respFormularioFEJ")
+    respuesta.innerHTML = "El APV total que debe ingresar es " + (fondose - Math.round(fondoTotal)) + " o " + Math.round((fondose - Math.round(fondoTotal))/(parseInt(edadjubilacion) - parseInt(edad))) + " cada año."
 })

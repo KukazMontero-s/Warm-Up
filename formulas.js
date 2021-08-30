@@ -24,7 +24,12 @@ document.getElementById('enviar1').addEventListener('click', function(e) {
             }
 
         if (edadjubilacion != ""){
-            if(edad >= edadjubilacion){
+            if(isNaN(edadjubilacion.replace(',','').replace(',','').replace(',',''))){
+                alert('La edad de jubilacion ingresada sólo acepta valores numéricos');
+                edad.focus();
+                return false;
+                }
+            else if(edad >= edadjubilacion){
                 alert('La edad de Jubilacion debe ser mayor que la edad actual');
                 edad.focus();
                 return false;
@@ -67,7 +72,14 @@ document.getElementById('enviar1').addEventListener('click', function(e) {
             }
         
         if(rentabilidad1 != ""){
-            rentabilidad = rentabilidad1/100
+            if(isNaN(rentabilidad1.replace(',','').replace(',','').replace(',',''))){
+                alert('La rentabilidad del afiliado sólo aceptan valores numéricos');
+                return false;
+                }
+                else{
+                    rentabilidad = rentabilidad1/100
+                }
+            
         }
         else{
             if (rentabilidad == ""){
@@ -124,10 +136,17 @@ document.getElementById('enviar1').addEventListener('click', function(e) {
             fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
         }
 
+        if(genero == "Mujer"){
+            pensionm=fondoTotal/((90-edadjubilacion)*12)
+        }
+        if(genero == "Hombre"){
+            pensionm=fondoTotal/((85-edadjubilacion)*12)
+        }
+
         console.log(fondoTotal)
         
         
 
-    var parrafo = document.getElementById("parrafo")
-    parrafo.innerHTML = "Su fondo total es de " + Math.round(fondoTotal) + " Con una pension mensual de " + Math.round(fondoTotal/180)
+    var respuesta = document.querySelector(".respFormularioAPV")
+    respuesta.innerHTML = "Su fondo total es de " + Math.round(fondoTotal) + " con una pension mensual de " + Math.round(pensionm) + "."
 })
