@@ -5,21 +5,16 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
     var rentabilidad1 = document.getElementById("rentabilidad3").value 
     var fecha = document.getElementById("fecha1").value
     var genero = document.getElementById("genero1").value
-    var edad = document.getElementById("edad1").value
+    var FechaN = document.getElementById("edad1").value
     var edadjubilacion = document.getElementById("edadjubilacion1").value
     var sueldo = document.getElementById("sueldo1").value
     var fondos = document.getElementById("fondos1").value
     var fondose = document.getElementById("fondosesperados").value
 
 
-        if (edad == ""){
-            alert('Debe ingresar Edad Actual  Afiliado');
-            edad.focus();
-            return false;
-            }
-            else if(isNaN(edad.replace(',','').replace(',','').replace(',',''))){
-            alert('La edad del afiliado sólo aceptan valores numéricos');
-            edad.focus();
+        if (FechaN == ""){
+            alert('Debe seleccionar su fecha de nacimiento');
+            FechaN.focus();
             return false;
             }
 
@@ -120,14 +115,55 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
         mesActual = elem[1];
         diaActual = elem[2];
 
+        var Date1 = FechaN;
+        var elem1 = Date1.split('-');
+        anoNacimiento = elem1[0];
+        mesNacimiento = elem1[1];
+        diaNacimiento = elem1[2];
+
+
         var fondoTotal = parseFloat(fondos);
         
-        console.log(fondoTotal)
-                
-        for (var i = 0; i < (parseInt(edadjubilacion) - parseInt(edad)); i++) {
-            fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
+        if(mesNacimiento >= mesActual){
+            edad = (anoActual - anoNacimiento) - 1;
+
+            //Años cotizados
+            for (var i = 0; i < ((parseInt(edadjubilacion) - parseInt(edad)) - 2); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
+            }
+
+            //Meses Cotizados
+            //-Su ultimo año
+            for (var i = 0; i < (parseInt(mesNacimiento)); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 1))
+            }
+
+            //-Su primer año
+            for (var i = 0; i < (12 - parseInt(mesActual)); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 1))
+            }
+
+
+        }else{
+            edad = anoActual - anoNacimiento;
+
+            //Años Cotizados
+            for (var i = 0; i < (parseInt(edadjubilacion) - parseInt(edad)); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
+            }
+
+            //Meses Cotizados
+            //-Su ultimo año
+            for (var i = 0; i < (parseInt(mesNacimiento)); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 1))
+            }
+
+            //-Su primer año
+            for (var i = 0; i < (12 - parseInt(mesActual)); i++) {
+                fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 1))
+            }
+
         }
-        
 
         console.log(fondoTotal)
         
