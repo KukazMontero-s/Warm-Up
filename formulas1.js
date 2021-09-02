@@ -148,7 +148,7 @@ document.getElementById('enviar2').addEventListener('click', function(e) {
             edad = anoActual - anoNacimiento;
 
             //Años Cotizados
-            for (var i = 0; i < (parseInt(edadjubilacion) - parseInt(edad)); i++) {
+            for (var i = 0; i < ((parseInt(edadjubilacion) - parseInt(edad)) - 2); i++) {
                 fondoTotal += ( (parseFloat(sueldo)*0.1) * Math.pow(1 + parseFloat(rentabilidad), 12))
             }
 
